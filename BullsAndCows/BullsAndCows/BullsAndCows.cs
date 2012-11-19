@@ -2,7 +2,7 @@ using System;
 
 namespace BullsAndCows
 {
-    class Program
+    public class Program
     {
 
         static void Main(string[] args)
@@ -77,4 +77,3 @@ namespace BullsAndCows
         }
     }
 }
- No newline at end of file
