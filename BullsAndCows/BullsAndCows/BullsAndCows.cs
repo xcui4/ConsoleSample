@@ -36,20 +36,15 @@ namespace BullsAndCows
             char[] guessed = guess.ToCharArray();
             int bullsCount = 0, cowsCount = 0;
 
-            if (guessed.Length != 4)
-            {
-                Console.WriteLine("Not a valid guess.");
-                return false;
-            }
+            if (InvalidLengthChars(guessed)) return false;
+
+            if (ContainsInvalidChars(guessed)) return false;
+
 
             for (int i = 0; i < 4; i++)
             {
-                int curguess = (int)char.GetNumericValue(guessed[i]);
-                if (curguess < 1 || curguess > 9)
-                {
-                    Console.WriteLine("Digit must be ge greater 0 and lower 10.");
-                    return false;
-                }
+                int curguess = (int) char.GetNumericValue(guessed[i]);
+
                 if (curguess == num[i])
                 {
                     bullsCount++;
@@ -59,6 +54,7 @@ namespace BullsAndCows
                     cowsCount = CalculateCowsCount(num, cowsCount, curguess);
                 }
             }
+        
 
             if (bullsCount == 4)
             {
@@ -70,6 +66,30 @@ namespace BullsAndCows
                 Console.WriteLine("Your Score is {0} bulls and {1} cows", bullsCount, cowsCount);
                 return false;
             }
+        }
+
+        private static bool InvalidLengthChars(char[] guessed)
+        {
+            if (guessed.Length != 4)
+            {
+                Console.WriteLine("Not a valid guess.");
+                return true;
+            }
+            return false;
+        }
+
+        private static bool ContainsInvalidChars(char[] guessed)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                int curguess = (int) char.GetNumericValue(guessed[i]);
+                if (curguess < 1 || curguess > 9)
+                {
+                    Console.WriteLine("Digit must be ge greater 0 and lower 10.");
+                    return true;
+                }
+            }
+            return false;
         }
 
         private static int CalculateCowsCount(int[] num, int cowsCount, int curguess)
