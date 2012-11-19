@@ -19,9 +19,15 @@ namespace BullsAndCowsTest
         }
         
         [TestMethod]
-        public void ShouldReturnFalseGivenAnswerIncludeGreaterThanNine()
+        public void ShouldReturnFalseGivenAnswerIncludeNumberSmallerThanOne()
         {
             Assert.IsFalse(BullsAndCows.Program.game("1230", new int[] { 1, 2, 3, 4 }));
+        }
+        
+        [TestMethod]
+        public void ShouldReturnFalseGivenAnswerIncludeNonNumber()
+        {
+            Assert.IsFalse(BullsAndCows.Program.game("123a", new int[] { 1, 2, 3, 4 }));
         }
         
         [TestMethod]
