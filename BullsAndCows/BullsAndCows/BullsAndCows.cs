@@ -56,11 +56,7 @@ namespace BullsAndCows
                 }
                 else
                 {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (curguess == num[j])
-                            cowsCount++;
-                    }
+                    cowsCount = CalculateCowsCount(num, cowsCount, curguess);
                 }
             }
 
@@ -74,6 +70,16 @@ namespace BullsAndCows
                 Console.WriteLine("Your Score is {0} bulls and {1} cows", bullsCount, cowsCount);
                 return false;
             }
+        }
+
+        private static int CalculateCowsCount(int[] num, int cowsCount, int curguess)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (curguess == num[j])
+                    cowsCount++;
+            }
+            return cowsCount;
         }
     }
 }
