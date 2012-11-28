@@ -2,7 +2,7 @@ using System;
 
 namespace TrainingForTrainer
 {
-    class Employee
+    public class Employee
     {
         private readonly int type;
         private readonly int monthlySalary;
@@ -21,19 +21,34 @@ namespace TrainingForTrainer
             this.bonus = bonus;
         }
 
-        int Payment()
+        public int Payment()
         {
             switch (type)
             {
                 case Engineer:
-                    return monthlySalary;
+                    return CalculateEngineerPayment();
                 case Salesman:
-                    return monthlySalary + commission;
+                    return CalculateSalesmanPayment();
                 case Manager:
-                    return monthlySalary + bonus;
+                    return CalculateManagerPayment();
                 default:
                     throw new ApplicationException("Incorrect Employee");
             }
+        }
+
+        private int CalculateManagerPayment()
+        {
+            return monthlySalary + bonus;
+        }
+
+        private int CalculateSalesmanPayment()
+        {
+            return monthlySalary + commission;
+        }
+
+        private int CalculateEngineerPayment()
+        {
+            return monthlySalary;
         }
     }
 

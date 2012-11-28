@@ -7,8 +7,8 @@ namespace BullsAndCows
 
         static void Main(string[] args)
         {
-            var nums = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            KnuthShuffle<int>(ref nums);
+            var nums = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            KnuthShuffle(ref nums);
             var chosenNum = new int[4];
             Array.Copy(nums, chosenNum, 4);
 
