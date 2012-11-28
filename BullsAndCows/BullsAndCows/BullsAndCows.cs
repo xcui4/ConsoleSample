@@ -7,9 +7,9 @@ namespace BullsAndCows
 
         static void Main(string[] args)
         {
-            int[] nums = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var nums = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             KnuthShuffle<int>(ref nums);
-            int[] chosenNum = new int[4];
+            var chosenNum = new int[4];
             Array.Copy(nums, chosenNum, 4);
 
             Console.WriteLine("Your Guess ?");
@@ -23,27 +23,42 @@ namespace BullsAndCows
 
         public static void KnuthShuffle<T>(ref T[] array)
         {
-            System.Random random = new System.Random();
-            for (int i = 0; i < array.Length; i++)
+            var random = new System.Random();
+            for (var i = 0; i < array.Length; i++)
             {
-                int j = random.Next(array.Length);
-                T temp = array[i]; array[i] = array[j]; array[j] = temp;
+                var j = random.Next(array.Length);
+                var temp = array[i]; array[i] = array[j]; array[j] = temp;
             }
         }
 
         public static bool game(string guess, int[] num)
         {
-            char[] guessed = guess.ToCharArray();
-            int bullsCount = 0, cowsCount = 0;
+            var guessed = guess.ToCharArray();
+            var bullsCount = 0;
+            var cowsCount = 0;
 
             if (InvalidLengthChars(guessed)) return false;
 
             if (ContainsInvalidChars(guessed)) return false;
 
 
-            for (int i = 0; i < 4; i++)
+            bullsCount = Parse(num, bullsCount, guessed, ref cowsCount);
+        
+
+            if (bullsCount == 4)
             {
-                int curguess = (int) char.GetNumericValue(guessed[i]);
+                Console.WriteLine("Congratulations! You have won!");
+                return true;
+            }
+            Console.WriteLine("Your Score is {0} bulls and {1} cows", bullsCount, cowsCount);
+            return false;
+        }
+
+        private static int Parse(int[] num, int bullsCount, char[] guessed, ref int cowsCount)
+        {
+            for (var i = 0; i < 4; i++)
+            {
+                var curguess = (int) char.GetNumericValue(guessed[i]);
 
                 if (curguess == num[i])
                 {
@@ -54,18 +69,7 @@ namespace BullsAndCows
                     cowsCount = CalculateCowsCount(num, cowsCount, curguess);
                 }
             }
-        
-
-            if (bullsCount == 4)
-            {
-                Console.WriteLine("Congratulations! You have won!");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Your Score is {0} bulls and {1} cows", bullsCount, cowsCount);
-                return false;
-            }
+            return bullsCount;
         }
 
         private static bool InvalidLengthChars(char[] guessed)
@@ -80,9 +84,9 @@ namespace BullsAndCows
 
         private static bool ContainsInvalidChars(char[] guessed)
         {
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
-                int curguess = (int) char.GetNumericValue(guessed[i]);
+                var curguess = (int) char.GetNumericValue(guessed[i]);
                 if (curguess < 1 || curguess > 9)
                 {
                     Console.WriteLine("Digit must be ge greater 0 and lower 10.");
@@ -94,7 +98,7 @@ namespace BullsAndCows
 
         private static int CalculateCowsCount(int[] num, int cowsCount, int curguess)
         {
-            for (int j = 0; j < 4; j++)
+            for (var j = 0; j < 4; j++)
             {
                 if (curguess == num[j])
                     cowsCount++;
