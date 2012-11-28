@@ -22,8 +22,8 @@ namespace TrainingForTrainer
 
     public class Engineer:Employee
     {
-        public Engineer(int monthlySalary, int commission, int bonus)
-            : base(0, monthlySalary, commission, bonus)
+        public Engineer(int monthlySalary)
+            : base(0, monthlySalary, 0, 0)
         {
             
         }
@@ -36,8 +36,8 @@ namespace TrainingForTrainer
 
     public class Salesman : Employee
     {
-        public Salesman(int monthlySalary, int commission, int bonus)
-            : base(1, monthlySalary, commission, bonus)
+        public Salesman(int monthlySalary, int commission)
+            : base(1, monthlySalary, commission, 0)
         {
         }
 
@@ -48,8 +48,8 @@ namespace TrainingForTrainer
     }
     public class Manager : Employee
     {
-        public Manager(int monthlySalary, int commission, int bonus)
-            : base(2, monthlySalary, commission, bonus)
+        public Manager(int monthlySalary, int bonus)
+            : base(2, monthlySalary, 0, bonus)
         {
 
         }

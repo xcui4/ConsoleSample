@@ -9,21 +9,21 @@ namespace TrainingForTrainerTest
         [TestMethod]
         public void ShouldGetEngineerPayment()
         {
-            var engineer = new Engineer(3000,0,0);
+            var engineer = new Engineer(3000);
             Assert.AreEqual(3000, engineer.Payment());
         }
         
         [TestMethod]
         public void ShouldGetSalesmanPaymentWithCommission()
         {
-            var salesman = new Salesman(3000, 100, 0);
+            var salesman = new Salesman(3000, 100);
             Assert.AreEqual(3000 + 100, salesman.Payment());
         }
         
         [TestMethod]
         public void ShouldGetManagerPaymentWithBonus()
         {
-            var manager = new Manager(3000, 0, 200);
+            var manager = new Manager(3000, 200);
             Assert.AreEqual(3000 + 200, manager.Payment());
         }
     }
