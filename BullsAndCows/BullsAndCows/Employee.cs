@@ -6,7 +6,7 @@ namespace TrainingForTrainer
     {
         private readonly int type;
         public readonly int monthlySalary;
-        private readonly int commission;
+        public readonly int commission;
         public readonly int bonus;
 
         private const int Engineer = 0;
@@ -26,24 +26,14 @@ namespace TrainingForTrainer
             switch (type)
             {
                 case Engineer:
-                    return CalculateEngineerPayment(this);
+                    return TrainingForTrainer.Engineer.CalculateEngineerPayment(new Engineer(type, monthlySalary, commission, bonus));
                 case Salesman:
-                    return CalculateSalesmanPayment(this);
+                    return TrainingForTrainer.Salesman.CalculateSalesmanPayment(new Salesman(type, monthlySalary, commission, bonus));
                 case Manager:
                     return  TrainingForTrainer.Manager.CalculateManagerPayment(new Manager(type, monthlySalary, commission, bonus));
                 default:
                     throw new ApplicationException("Incorrect Employee");
             }
-        }
-
-        private static int CalculateSalesmanPayment(Employee employee)
-        {
-            return employee.monthlySalary + employee.commission;
-        }
-
-        private static int CalculateEngineerPayment(Employee employee)
-        {
-            return employee.monthlySalary;
         }
     }
 
@@ -52,6 +42,11 @@ namespace TrainingForTrainer
         public Engineer(int type, int monthlySalary, int commission, int bonus) : base(type, monthlySalary, commission, bonus)
         {
         }
+
+        public static int CalculateEngineerPayment(Employee employee)
+        {
+            return employee.monthlySalary;
+        }
     }
 
     public class Salesman : Employee
@@ -59,6 +54,11 @@ namespace TrainingForTrainer
         public Salesman(int type, int monthlySalary, int commission, int bonus)
             : base(type, monthlySalary, commission, bonus)
         {
+        }
+
+        public static int CalculateSalesmanPayment(Employee employee)
+        {
+            return employee.monthlySalary + employee.commission;
         }
     }
     public class Manager : Employee
