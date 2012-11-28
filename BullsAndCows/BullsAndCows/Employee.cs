@@ -5,9 +5,9 @@ namespace TrainingForTrainer
     public class Employee
     {
         private readonly int type;
-        private readonly int monthlySalary;
+        public readonly int monthlySalary;
         private readonly int commission;
-        private readonly int bonus;
+        public readonly int bonus;
 
         private const int Engineer = 0;
         private const int Salesman = 1;
@@ -26,29 +26,24 @@ namespace TrainingForTrainer
             switch (type)
             {
                 case Engineer:
-                    return CalculateEngineerPayment();
+                    return CalculateEngineerPayment(this);
                 case Salesman:
-                    return CalculateSalesmanPayment();
+                    return CalculateSalesmanPayment(this);
                 case Manager:
-                    return CalculateManagerPayment();
+                    return  TrainingForTrainer.Manager.CalculateManagerPayment(new Manager(type, monthlySalary, commission, bonus));
                 default:
                     throw new ApplicationException("Incorrect Employee");
             }
         }
 
-        private int CalculateManagerPayment()
+        private static int CalculateSalesmanPayment(Employee employee)
         {
-            return monthlySalary + bonus;
+            return employee.monthlySalary + employee.commission;
         }
 
-        private int CalculateSalesmanPayment()
+        private static int CalculateEngineerPayment(Employee employee)
         {
-            return monthlySalary + commission;
-        }
-
-        private int CalculateEngineerPayment()
-        {
-            return monthlySalary;
+            return employee.monthlySalary;
         }
     }
 
@@ -71,6 +66,11 @@ namespace TrainingForTrainer
         public Manager(int type, int monthlySalary, int commission, int bonus)
             : base(type, monthlySalary, commission, bonus)
         {
+        }
+
+        public static int CalculateManagerPayment(Employee employee)
+        {
+            return employee.monthlySalary + employee.bonus;
         }
     }
 }
