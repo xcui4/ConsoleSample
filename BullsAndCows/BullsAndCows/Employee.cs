@@ -28,14 +28,9 @@ namespace TrainingForTrainer
             
         }
 
-        public static int CalculateEngineerPayment(Employee employee)
-        {
-            return employee.monthlySalary;
-        }
-
         public int Payment()
         {
-            return TrainingForTrainer.Engineer.CalculateEngineerPayment(this);
+            return this.monthlySalary;
         }
     }
 
@@ -46,14 +41,9 @@ namespace TrainingForTrainer
         {
         }
 
-        public static int CalculateSalesmanPayment(Employee employee)
-        {
-            return employee.monthlySalary + employee.commission;
-        }
-
         public int Payment()
         {
-            return TrainingForTrainer.Salesman.CalculateSalesmanPayment(this);
+            return this.monthlySalary + this.commission;
         }
     }
     public class Manager : Employee
@@ -64,14 +54,9 @@ namespace TrainingForTrainer
 
         }
 
-        public static int CalculateManagerPayment(Employee employee)
-        {
-            return employee.monthlySalary + employee.bonus;
-        }
-
         public int Payment()
         {
-            return TrainingForTrainer.Manager.CalculateManagerPayment(this);
+            return this.monthlySalary + this.bonus;
         }
     }
 }
