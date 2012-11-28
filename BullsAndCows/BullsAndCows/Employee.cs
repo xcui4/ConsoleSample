@@ -21,16 +21,16 @@ namespace TrainingForTrainer
             this.bonus = bonus;
         }
 
-        public int Payment()
+        public static int Payment(Employee employee)
         {
-            switch (type)
+            switch (employee.type)
             {
                 case Engineer:
-                    return TrainingForTrainer.Engineer.CalculateEngineerPayment(this);
+                    return TrainingForTrainer.Engineer.CalculateEngineerPayment(employee);
                 case Salesman:
-                    return TrainingForTrainer.Salesman.CalculateSalesmanPayment(this);
+                    return TrainingForTrainer.Salesman.CalculateSalesmanPayment(employee);
                 case Manager:
-                    return  TrainingForTrainer.Manager.CalculateManagerPayment(this);
+                    return  TrainingForTrainer.Manager.CalculateManagerPayment(employee);
                 default:
                     throw new ApplicationException("Incorrect Employee");
             }
@@ -47,6 +47,11 @@ namespace TrainingForTrainer
         {
             return employee.monthlySalary;
         }
+
+        public int Payment()
+        {
+            return TrainingForTrainer.Engineer.CalculateEngineerPayment(this);
+        }
     }
 
     public class Salesman : Employee
@@ -60,6 +65,11 @@ namespace TrainingForTrainer
         {
             return employee.monthlySalary + employee.commission;
         }
+
+        public int Payment()
+        {
+            return TrainingForTrainer.Salesman.CalculateSalesmanPayment(this);
+        }
     }
     public class Manager : Employee
     {
@@ -71,6 +81,11 @@ namespace TrainingForTrainer
         public static int CalculateManagerPayment(Employee employee)
         {
             return employee.monthlySalary + employee.bonus;
+        }
+
+        public int Payment()
+        {
+            return TrainingForTrainer.Manager.CalculateManagerPayment(this);
         }
     }
 }
