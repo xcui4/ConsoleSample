@@ -52,4 +52,25 @@ namespace TrainingForTrainer
         }
     }
 
+    public class Engineer:Employee
+    {
+        public Engineer(int type, int monthlySalary, int commission, int bonus) : base(type, monthlySalary, commission, bonus)
+        {
+        }
+    }
+
+    public class Salesman : Employee
+    {
+        public Salesman(int type, int monthlySalary, int commission, int bonus)
+            : base(type, monthlySalary, commission, bonus)
+        {
+        }
+    }
+    public class Manager : Employee
+    {
+        public Manager(int type, int monthlySalary, int commission, int bonus)
+            : base(type, monthlySalary, commission, bonus)
+        {
+        }
+    }
 }
