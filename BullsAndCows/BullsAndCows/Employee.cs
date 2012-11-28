@@ -26,11 +26,11 @@ namespace TrainingForTrainer
             switch (type)
             {
                 case Engineer:
-                    return TrainingForTrainer.Engineer.CalculateEngineerPayment(new Engineer(type, monthlySalary, commission, bonus));
+                    return TrainingForTrainer.Engineer.CalculateEngineerPayment(this);
                 case Salesman:
-                    return TrainingForTrainer.Salesman.CalculateSalesmanPayment(new Salesman(type, monthlySalary, commission, bonus));
+                    return TrainingForTrainer.Salesman.CalculateSalesmanPayment(this);
                 case Manager:
-                    return  TrainingForTrainer.Manager.CalculateManagerPayment(new Manager(type, monthlySalary, commission, bonus));
+                    return  TrainingForTrainer.Manager.CalculateManagerPayment(this);
                 default:
                     throw new ApplicationException("Incorrect Employee");
             }
