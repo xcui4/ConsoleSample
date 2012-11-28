@@ -1,5 +1,3 @@
-using System;
-
 namespace TrainingForTrainer
 {
     public class Employee
@@ -19,21 +17,6 @@ namespace TrainingForTrainer
             this.monthlySalary = monthlySalary;
             this.commission = commission;
             this.bonus = bonus;
-        }
-
-        public static int Payment(Employee employee)
-        {
-            switch (employee.type)
-            {
-                case Engineer:
-                    return TrainingForTrainer.Engineer.CalculateEngineerPayment(employee);
-                case Salesman:
-                    return TrainingForTrainer.Salesman.CalculateSalesmanPayment(employee);
-                case Manager:
-                    return  TrainingForTrainer.Manager.CalculateManagerPayment(employee);
-                default:
-                    throw new ApplicationException("Incorrect Employee");
-            }
         }
     }
 
