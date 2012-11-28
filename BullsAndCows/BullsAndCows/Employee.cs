@@ -1,6 +1,6 @@
 namespace TrainingForTrainer
 {
-    public class Employee
+    public abstract class Employee:IPayment
     {
         private readonly int type;
         public readonly int monthlySalary;
@@ -18,6 +18,13 @@ namespace TrainingForTrainer
             this.commission = commission;
             this.bonus = bonus;
         }
+
+        abstract public int Payment();
+    }
+
+    public interface IPayment
+    {
+        int Payment();
     }
 
     public class Engineer:Employee
@@ -28,7 +35,7 @@ namespace TrainingForTrainer
             
         }
 
-        public int Payment()
+        public override int Payment()
         {
             return this.monthlySalary;
         }
@@ -41,7 +48,7 @@ namespace TrainingForTrainer
         {
         }
 
-        public int Payment()
+        public override int Payment()
         {
             return this.monthlySalary + this.commission;
         }
@@ -54,7 +61,7 @@ namespace TrainingForTrainer
 
         }
 
-        public int Payment()
+        public override int Payment()
         {
             return this.monthlySalary + this.bonus;
         }
