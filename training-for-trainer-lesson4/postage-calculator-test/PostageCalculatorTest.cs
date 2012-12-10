@@ -11,7 +11,8 @@ namespace postage_calculator_test
         [TestMethod]
         public void should_caculate_postage_for_book()
         {
-            var book = new Book(3);
+            var sf = new SF();
+            var book = new Book(3, sf);
             var postage = new PostageCalculator().GetPostage(new List<IPostable> {book});
             Assert.AreEqual(9, postage);
         }
@@ -31,5 +32,7 @@ namespace postage_calculator_test
             var postage = new PostageCalculator().GetPostage(new List<IPostable> {oven});
             Assert.AreEqual(80, postage);
         }
+
     }
+
 }

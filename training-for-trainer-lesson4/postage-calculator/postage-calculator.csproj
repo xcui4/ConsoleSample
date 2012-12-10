@@ -49,6 +49,7 @@
     <Compile Include="Item\Food.cs" />
     <Compile Include="Item\IPostable.cs" />
     <Compile Include="Item\Oven.cs" />
+    <Compile Include="Item\SF.cs" />
     <Compile Include="PostageCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
