@@ -58,5 +58,21 @@ namespace postage_calculator_test
             Assert.AreEqual(18, postage);
         }
 
+
+        [TestMethod]
+        public void should_caculate_ZT_postage_for_Food_Less_Than_5KG()
+        {
+            var food = new Food(3, _Zt);
+            var postage = new PostageCalculator().GetPostage(new List<IPostable> { food });
+            Assert.AreEqual(10, postage);
+        }
+
+        [TestMethod]
+        public void should_caculate_ZT_postage_for_Food_More_Than_5KG()
+        {
+            var food = new Food(7, _Zt);
+            var postage = new PostageCalculator().GetPostage(new List<IPostable> { food });
+            Assert.AreEqual(18, postage);
+        }
     }
 }
