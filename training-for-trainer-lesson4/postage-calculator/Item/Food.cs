@@ -3,17 +3,15 @@
     public class Food : IPostable
     {
         public double Weight { get; private set; }
-        public IPostCompany PostCompany { get; set; }
 
-        public Food(double weight, IPostCompany postCompany)
+        public Food(double weight)
         {
             Weight = weight;
-            PostCompany = postCompany;
         }
 
-        public double Postage()
+        public double Postage(IPostCompany postCompany)
         {
-            return PostCompany.GetFoodPrice(Weight);
+            return postCompany.GetFoodPrice(Weight);
         }
     }
 }

@@ -6,9 +6,9 @@ namespace postage_calculator
 {
     public class PostageCalculator
     {
-        public double GetPostage(IList<IPostable> items)
+        public double GetPostage(IList<IPostable> items, IPostCompany postCompany)
         {
-            return items.Sum(i => i.Postage());
+            return items.Sum(i => i.Postage(postCompany));
         }
     }
 }

@@ -4,18 +4,16 @@ namespace postage_calculator.Item
 {
     public class Book : IPostable
     {
-        private readonly IPostCompany PostCompany;
         public double Weight { get; private set; }
 
-        public Book(double weight, IPostCompany postCompany)
+        public Book(double weight)
         {
-            PostCompany = postCompany;
             Weight = weight;
         }
 
-        public double Postage()
+        public double Postage(IPostCompany postCompany)
         {
-            return PostCompany.GetBookPrice(Weight);
+            return postCompany.GetBookPrice(Weight);
         }
     }
 }

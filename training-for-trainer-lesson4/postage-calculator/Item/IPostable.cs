@@ -3,6 +3,6 @@ namespace postage_calculator.Item
 {
     public interface IPostable
     {
-        double Postage();
+        double Postage(IPostCompany postCompany);
     }
 }
