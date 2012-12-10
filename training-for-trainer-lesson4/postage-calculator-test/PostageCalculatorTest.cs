@@ -33,7 +33,7 @@ namespace postage_calculator_test
         [TestMethod]
         public void should_caculate_postage_for_oven()
         {
-            var oven = new Oven(2);
+            var oven = new Oven(2, _sf);
             var postage = new PostageCalculator().GetPostage(new List<IPostable> {oven});
             Assert.AreEqual(80, postage);
         }

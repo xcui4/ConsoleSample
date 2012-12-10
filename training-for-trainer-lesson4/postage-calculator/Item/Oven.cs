@@ -3,15 +3,17 @@
     public class Oven : IPostable
     {
         public int Count { get; private set; }
+        public SF Sf { get; set; }
 
-        public Oven(int count)
+        public Oven(int count, SF sf)
         {
             Count = count;
+            Sf = sf;
         }
 
         public double Postage()
         {
-            return 40 * Count;
+            return Sf.GetOvenPrice(Count);
         }
 
     }
