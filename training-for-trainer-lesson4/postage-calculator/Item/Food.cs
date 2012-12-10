@@ -3,9 +3,9 @@
     public class Food : IPostable
     {
         public double Weight { get; private set; }
-        public SF Sf { private get; set; }
+        public IPostCompany Sf { private get; set; }
 
-        public Food(double weight, SF sf)
+        public Food(double weight, IPostCompany sf)
         {
             Weight = weight;
             Sf = sf;

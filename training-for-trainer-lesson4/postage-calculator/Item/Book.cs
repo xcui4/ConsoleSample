@@ -4,10 +4,10 @@ namespace postage_calculator.Item
 {
     public class Book : IPostable
     {
-        private readonly SF m_Sf;
+        private readonly IPostCompany m_Sf;
         public double Weight { get; private set; }
 
-        public Book(double weight, SF sf)
+        public Book(double weight, IPostCompany sf)
         {
             m_Sf = sf;
             Weight = weight;

@@ -1,6 +1,13 @@
 namespace postage_calculator.Item
 {
-    public class SF
+    public interface IPostCompany
+    {
+        double GetBookPrice(double weight);
+        double GetFoodPrice(double weight);
+        double GetOvenPrice(int count);
+    }
+
+    public class SF : IPostCompany
     {
         public double GetBookPrice(double weight)
         {

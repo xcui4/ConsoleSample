@@ -3,9 +3,9 @@
     public class Oven : IPostable
     {
         public int Count { get; private set; }
-        public SF Sf { get; set; }
+        public IPostCompany Sf { get; set; }
 
-        public Oven(int count, SF sf)
+        public Oven(int count, IPostCompany sf)
         {
             Count = count;
             Sf = sf;
