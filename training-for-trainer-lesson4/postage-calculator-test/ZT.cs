@@ -17,7 +17,7 @@ namespace postage_calculator_test
 
         public double GetOvenPrice(int count)
         {
-            return 0;
+            return CalculatePrice(count*10);
         }
 
         private double CalculatePrice(double weight)

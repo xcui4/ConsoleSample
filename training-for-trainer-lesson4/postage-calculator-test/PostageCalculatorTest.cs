@@ -74,5 +74,13 @@ namespace postage_calculator_test
             var postage = new PostageCalculator().GetPostage(new List<IPostable> { food });
             Assert.AreEqual(18, postage);
         }
+
+        [TestMethod]
+        public void should_caculate_ZF_postage_for_oven()
+        {
+            var oven = new Oven(1, _Zt);
+            var postage = new PostageCalculator().GetPostage(new List<IPostable> { oven });
+            Assert.AreEqual(30, postage);
+        }
     }
 }
