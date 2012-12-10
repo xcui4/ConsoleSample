@@ -8,11 +8,16 @@ namespace postage_calculator_test
     [TestClass]
     public class PostageCalculatorTest
     {
+        private SF _sf = null;
+        [TestInitialize]
+        public  void TestInitialize()
+        {
+            _sf = new SF();
+        }
         [TestMethod]
         public void should_caculate_postage_for_book()
         {
-            var sf = new SF();
-            var book = new Book(3, sf);
+            var book = new Book(3, _sf);
             var postage = new PostageCalculator().GetPostage(new List<IPostable> {book});
             Assert.AreEqual(9, postage);
         }
@@ -20,7 +25,7 @@ namespace postage_calculator_test
         [TestMethod]
         public void should_caculate_postage_for_food()
         {
-            var food = new Food(4);
+            var food = new Food(4, _sf);
             var postage = new PostageCalculator().GetPostage(new List<IPostable> {food});
             Assert.AreEqual(16, postage);
         }

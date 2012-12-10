@@ -3,15 +3,17 @@
     public class Food : IPostable
     {
         public double Weight { get; private set; }
+        public SF Sf { private get; set; }
 
-        public Food(double weight)
+        public Food(double weight, SF sf)
         {
             Weight = weight;
+            Sf = sf;
         }
 
         public double Postage()
         {
-            return Weight * 4;
+            return Sf.GetFoodPrice(Weight);
         }
     }
 }
