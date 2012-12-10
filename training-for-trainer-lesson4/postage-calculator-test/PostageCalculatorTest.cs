@@ -43,13 +43,20 @@ namespace postage_calculator_test
         }
 
         [TestMethod]
-        public void should_caculate_ZT_postage_for_book()
+        public void should_caculate_ZT_postage_for_book_Less_Than_5KG()
         {
-            var book = new Book(3, _Sf);
+            var book = new Book(3, _Zt);
             var postage = new PostageCalculator().GetPostage(new List<IPostable> { book });
-            Assert.AreEqual(9, postage);
+            Assert.AreEqual(10, postage);
         }
 
+        [TestMethod]
+        public void should_caculate_ZT_postage_for_book_More_Than_5KG()
+        {
+            var book = new Book(7, _Zt);
+            var postage = new PostageCalculator().GetPostage(new List<IPostable> { book });
+            Assert.AreEqual(18, postage);
+        }
 
     }
 }

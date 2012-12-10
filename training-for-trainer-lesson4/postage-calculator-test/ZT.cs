@@ -6,7 +6,7 @@ namespace postage_calculator_test
     {
         public double GetBookPrice(double weight)
         {
-            return 0;
+            return CalculatePrice(weight);
         }
 
         public double GetFoodPrice(double weight)
@@ -17,6 +17,11 @@ namespace postage_calculator_test
         public double GetOvenPrice(int count)
         {
             return 0;
+        }
+
+        private double CalculatePrice(double weight)
+        {
+            return (weight - 5) > 0 ? (weight - 5)*4 + 10 : 10;
         }
     }
 }
