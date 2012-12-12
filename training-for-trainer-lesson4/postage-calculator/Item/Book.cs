@@ -1,6 +1,4 @@
-﻿
-
-namespace postage_calculator.Item
+﻿namespace postage_calculator.Item
 {
     public class Book : IPostable
     {
