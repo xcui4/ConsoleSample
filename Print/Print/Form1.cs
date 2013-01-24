@@ -3,13 +3,15 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using Syncfusion.Windows.Forms.Grid;
 
 namespace Print
 {
+
+
     public partial class Form1 : Form
     {
         private System.Windows.Forms.Button printButton;
-        private Font printFont;
         private StreamReader streamToPrint;
 
         public Form1()
@@ -25,11 +27,14 @@ namespace Print
                    ("C:\\MyFile.txt");
                 try
                 {
-                    printFont = new Font("Arial", 10);
-                    PrintDocument pd = new PrintDocument();
-                    pd.PrintPage += new PrintPageEventHandler
-                       (this.pd_PrintPage);
-                    pd.Print();
+                    //PrintDocument pd = new PrintDocument();
+                    //pd.PrintPage += new PrintPageEventHandler
+                    //   (this.pd_PrintPage);
+                    //pd.Print();
+
+                    GridPrintDocument gpd = new GridPrintDocument(new GridControlBase());
+                    gpd.PrintPage += pd_PrintPage;
+                    gpd.Print();
                 }
                 finally
                 {
@@ -53,16 +58,17 @@ namespace Print
             string line = null;
 
             // Calculate the number of lines per page.
+            var printFont1 = new Font("Arial", 10);
             linesPerPage = ev.MarginBounds.Height /
-               printFont.GetHeight(ev.Graphics);
+               printFont1.GetHeight(ev.Graphics);
 
             // Print each line of the file.
             while (count < linesPerPage &&
                ((line = streamToPrint.ReadLine()) != null))
             {
                 yPos = topMargin + (count *
-                   printFont.GetHeight(ev.Graphics));
-                ev.Graphics.DrawString(line, printFont, Brushes.Black,
+                   printFont1.GetHeight(ev.Graphics));
+                ev.Graphics.DrawString(line, printFont1, Brushes.Black,
                    leftMargin, yPos, new StringFormat());
                 count++;
             }
